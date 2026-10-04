@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: agrichain_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: agrichain
+      POSTGRES_USER: agrichain_user
+      POSTGRES_PASSWORD: agrichain_password_2026
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: agrichain_backend
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://agrichain_user:agrichain_password_2026@postgres:5432/agrichain
+      SECRET_KEY: agrichain-production-secret-key-2026
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agrichain_frontend
+    restart: always
+    ports:
+      - "80:80"
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

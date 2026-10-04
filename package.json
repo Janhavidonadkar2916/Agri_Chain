@@ -1,0 +1,17 @@
+{
+  "name": "agrichain-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root workspace config for AgriChain",
+  "scripts": {
+    "install:all": "npm install --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "./backend/venv/bin/uvicorn api.index:app --reload",
+    "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "seed": "./backend/venv/bin/python backend/seed_data.py"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.2",
+    "firebase": "^12.17.0"
+  }
+}
