@@ -2,12 +2,42 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "internalType": "string", "name": "batchId", "type": "string" },
-      { "indexed": false, "internalType": "string", "name": "cropName", "type": "string" },
-      { "indexed": false, "internalType": "uint256", "name": "quantity", "type": "uint256" },
-      { "indexed": true, "internalType": "address", "name": "farmer", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-      { "indexed": false, "internalType": "string", "name": "dataHash", "type": "string" }
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "batchId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "cropName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "farmer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "dataHash",
+        "type": "string"
+      }
     ],
     "name": "BatchCreated",
     "type": "event"
@@ -15,10 +45,30 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "internalType": "string", "name": "batchId", "type": "string" },
-      { "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" },
-      { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "batchId",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
     ],
     "name": "OwnershipTransferred",
     "type": "event"
@@ -26,22 +76,67 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": true, "internalType": "string", "name": "batchId", "type": "string" },
-      { "indexed": false, "internalType": "string", "name": "statusName", "type": "string" },
-      { "indexed": true, "internalType": "address", "name": "updatedBy", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-      { "indexed": false, "internalType": "string", "name": "dataHash", "type": "string" }
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "batchId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "statusName",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "updatedBy",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "dataHash",
+        "type": "string"
+      }
     ],
     "name": "StatusUpdated",
     "type": "event"
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "_batchId", "type": "string" },
-      { "internalType": "string", "name": "_cropName", "type": "string" },
-      { "internalType": "uint256", "name": "_quantity", "type": "uint256" },
-      { "internalType": "string", "name": "_originLocation", "type": "string" },
-      { "internalType": "string", "name": "_dataHash", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "_batchId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_cropName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_quantity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_originLocation",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_dataHash",
+        "type": "string"
+      }
     ],
     "name": "createBatch",
     "outputs": [],
@@ -50,13 +145,41 @@
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "_batchId", "type": "string" },
-      { "internalType": "uint8", "name": "_status", "type": "uint8" },
-      { "internalType": "string", "name": "_action", "type": "string" },
-      { "internalType": "string", "name": "_actorRole", "type": "string" },
-      { "internalType": "address", "name": "_newOwner", "type": "address" },
-      { "internalType": "string", "name": "_dataHash", "type": "string" },
-      { "internalType": "string", "name": "_prevHash", "type": "string" }
+      {
+        "internalType": "string",
+        "name": "_batchId",
+        "type": "string"
+      },
+      {
+        "internalType": "uint8",
+        "name": "_status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "string",
+        "name": "_action",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_actorRole",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_newOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_dataHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_prevHash",
+        "type": "string"
+      }
     ],
     "name": "updateBatchStatus",
     "outputs": [],
@@ -64,18 +187,52 @@
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "string", "name": "_batchId", "type": "string" }],
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_batchId",
+        "type": "string"
+      }
+    ],
     "name": "getBatchHistory",
     "outputs": [
       {
         "components": [
-          { "internalType": "string", "name": "batchId", "type": "string" },
-          { "internalType": "string", "name": "action", "type": "string" },
-          { "internalType": "string", "name": "actorRole", "type": "string" },
-          { "internalType": "address", "name": "actorAddress", "type": "address" },
-          { "internalType": "uint256", "name": "timestamp", "type": "uint256" },
-          { "internalType": "string", "name": "txHash", "type": "string" },
-          { "internalType": "string", "name": "statusName", "type": "string" }
+          {
+            "internalType": "string",
+            "name": "batchId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "action",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "actorRole",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "actorAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "txHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "statusName",
+            "type": "string"
+          }
         ],
         "internalType": "struct AgriChain.HistoryEntry[]",
         "name": "",
@@ -88,8 +245,92 @@
   {
     "inputs": [],
     "name": "getTotalBatches",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "value": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "batches",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "batchId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "cropName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "originLocation",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "currentOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "dataHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "prevHash",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "batchExists",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   }
 ]

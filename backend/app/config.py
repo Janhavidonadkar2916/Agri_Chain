@@ -38,7 +38,12 @@ try:
 except Exception as e:
     print(f"Warning: Could not create upload directory {UPLOAD_DIR}: {e}")
 
-SECRET_KEY = os.getenv("SECRET_KEY", "agrichain-secret-jwt-key-998877665544332211-pbl-sem-5")
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    if IS_VERCEL:
+        raise RuntimeError("SECRET_KEY must be configured in Vercel environment variables")
+    # Development-only fallback; configure SECRET_KEY for stable local sessions.
+    SECRET_KEY = "dev-only-change-me-before-deployment-agrichain"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 # 24 hours
 

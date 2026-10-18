@@ -118,6 +118,8 @@ class HistoryItem(BaseModel):
 
 class VerificationResponse(BaseModel):
     is_authentic: bool
+    integrity_valid: bool = False
+    verification_note: Optional[str] = None
     batch: BatchResponse
     farmer_info: Optional[UserResponse]
     timeline: List[HistoryItem]

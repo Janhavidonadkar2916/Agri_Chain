@@ -34,3 +34,7 @@ backend/uploads/*
 
 # Firebase
 frontend/.firebase/
+# Experimental outputs and local secrets
+benchmark_results/
+.env.*
+!.env.example

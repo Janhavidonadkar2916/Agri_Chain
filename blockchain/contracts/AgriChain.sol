@@ -57,6 +57,9 @@ contract AgriChain {
         string memory _originLocation,
         string memory _dataHash
     ) public {
+        require(bytes(_batchId).length > 0, "Batch ID is required");
+        require(bytes(_cropName).length > 0, "Crop name is required");
+        require(_quantity > 0, "Quantity must be positive");
         require(!batchExists[_batchId], "Batch ID already exists");
 
         BatchRecord memory newBatch = BatchRecord({
@@ -100,10 +103,15 @@ contract AgriChain {
         address _newOwner,
         string memory _dataHash,
         string memory _prevHash
-    ) public {
-        require(batchExists[_batchId], "Batch does not exist");
+    ) public onlyBatchOwner(_batchId) {
+        require(_status <= uint8(BatchStatus.Sold), "Invalid status");
 
         BatchRecord storage batch = batches[_batchId];
+        // Enforce the expected state progression; no skipped or backward states.
+        require(_status == uint8(batch.status) + 1, "Invalid status transition");
+        // The caller must reference the exact metadata hash currently committed.
+        require(keccak256(bytes(_prevHash)) == keccak256(bytes(batch.dataHash)), "Previous hash mismatch");
+        require(bytes(_dataHash).length > 0, "Data hash is required");
         address oldOwner = batch.currentOwner;
         batch.status = BatchStatus(_status);
         if (_newOwner != address(0)) {

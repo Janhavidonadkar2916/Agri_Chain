@@ -149,6 +149,11 @@ class AgriChainLedgerEngine:
         if self.mode == "web3":
             status_code = self._status_code(action, actor_role)
             data_hash = self._metadata_hash(batch_id, action, actor_role, owner, time.time_ns())
+            # Contract-level provenance links metadata hashes, while the SQL
+            # explorer maintains its own block-hash chain. Read the last committed
+            # metadata hash from the contract to satisfy its previous-state check.
+            onchain_batch = self.contract.functions.batches(batch_id).call()
+            previous_data_hash = onchain_batch[7]
             receipt = self._send(
                 self.contract.functions.updateBatchStatus(
                     batch_id,
@@ -157,7 +162,7 @@ class AgriChainLedgerEngine:
                     actor_role,
                     ZERO_ADDRESS,
                     data_hash,
-                    prev_hash,
+                    previous_data_hash,
                 )
             )
             return self._real_block_result(receipt, data_hash)
