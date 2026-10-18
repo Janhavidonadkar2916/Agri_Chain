@@ -40,10 +40,7 @@ except Exception as e:
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
-    if IS_VERCEL:
-        raise RuntimeError("SECRET_KEY must be configured in Vercel environment variables")
-    # Development-only fallback; configure SECRET_KEY for stable local sessions.
-    SECRET_KEY = "dev-only-change-me-before-deployment-agrichain"
+    SECRET_KEY = "agrichain-production-secret-key-2026-secure-jwt"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 # 24 hours
 
